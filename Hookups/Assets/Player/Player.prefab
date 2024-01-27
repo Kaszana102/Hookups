@@ -437,6 +437,22 @@ MonoBehaviour:
     m_ActionName: Player/Grab[/Keyboard/e]
   - m_PersistentCalls:
       m_Calls:
+      - m_Target: {fileID: 8029654280528434540}
+        m_TargetAssemblyTypeName: PlayerMovement, Assembly-CSharp
+        m_MethodName: OnSprint
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: dd0558e5-5a8c-4168-919a-1df78c76b017
+    m_ActionName: Player/Sprint[/Keyboard/shift,/XInputControllerWindows/leftStickPress]
+  - m_PersistentCalls:
+      m_Calls:
       - m_Target: {fileID: 7525399048117535236}
         m_TargetAssemblyTypeName: PickupDrop, Assembly-CSharp
         m_MethodName: OnReleaseHand
@@ -449,7 +465,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-    m_ActionId: 8fd0c975-a741-4c73-b94d-02b8ea41cdf4
+    m_ActionId: 775732ac-b8fc-41bd-ada7-0f6b8d8bf3d8
     m_ActionName: Player/ReleaseHand[/XInputControllerWindows/buttonEast]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 

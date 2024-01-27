@@ -23,7 +23,30 @@ public class PlayerMovement : MonoBehaviour
     public void OnMove(InputAction.CallbackContext context)
     {
         move = context.ReadValue<Vector2>();
-        animator.SetInteger("MovSpeed", 1);        
+        if (!sprinting)
+        {
+            if((!context.started || context.performed) ^context.canceled){
+                animator.SetInteger("MovSpeed", 1);
+            }
+            else
+            {
+                animator.SetInteger("MovSpeed", 0);
+            }
+            
+        }
+    }
+
+    public void OnSprint(InputAction.CallbackContext context)
+    {
+        sprinting = (!context.started || context.performed) ^ context.canceled;
+        if (sprinting)
+        {
+            animator.SetInteger("MovSpeed", 2);
+        }
+        else
+        {
+            animator.SetInteger("MovSpeed", 0);
+        }           
     }
 
     public void OnLook(InputAction.CallbackContext context)
@@ -38,14 +61,6 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.LeftShift))
-        {
-            sprinting = true;
-        }
-        if (Input.GetKeyUp(KeyCode.LeftShift))
-        {
-            sprinting = false;
-        }
     }
 
     private void FixedUpdate()
