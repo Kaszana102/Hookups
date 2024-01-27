@@ -11,24 +11,28 @@ public class PickupDrop : MonoBehaviour
     [SerializeField] private LayerMask pickupLayerMask;
     private IGrabbable grabbable;
 
+    [SerializeField]
+    private Animator animator;
 
     public void OnGrab(InputAction.CallbackContext context){
         if (grabbable == null)
             {
-                float pickupDistance = 2f;
+                float pickupDistance = 30f;
                 if (Physics.Raycast(playerCameraTransform.position, playerCameraTransform.forward, out RaycastHit raycastHit, pickupDistance))
                 {
                     Debug.Log(raycastHit);
                     if (raycastHit.transform.TryGetComponent(out grabbable))
                     {
                         grabbable.grab(objectGrabPointTransform);
-                    }
+                        animator.SetBool("Holding", true);
+                }
                 }
             }
             else
             {
                 grabbable.drop();
-                grabbable = null;
+            animator.SetBool("Holding", false);
+            grabbable = null;
             }
     }
 }

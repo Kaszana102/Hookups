@@ -16,10 +16,13 @@ public class PlayerMovement : MonoBehaviour
     private Vector2 move, look;
     private float lookRotation;
 
+    [SerializeField]
+    private Animator animator;
 
     public void OnMove(InputAction.CallbackContext context)
     {
         move = context.ReadValue<Vector2>();
+        animator.SetInteger("MovSpeed", 1);        
     }
 
     public void OnLook(InputAction.CallbackContext context)
@@ -52,6 +55,7 @@ public class PlayerMovement : MonoBehaviour
     void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
+
     }
 
     // Update is called once per frame
@@ -82,6 +86,7 @@ public class PlayerMovement : MonoBehaviour
 
         if (grounded)
         {
+            animator.SetBool("Jumping",true);
             jumpForces = Vector3.up * jumpForce;
         }
         rb.AddForce(jumpForces,ForceMode.VelocityChange);
@@ -90,5 +95,9 @@ public class PlayerMovement : MonoBehaviour
     public void setGrounded(bool st)
     {
         grounded = st;
+        if (st)
+        {
+            animator.SetBool("Jumping", false);
+        }
     }
 }
