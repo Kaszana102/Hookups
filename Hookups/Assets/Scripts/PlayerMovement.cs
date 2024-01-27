@@ -12,15 +12,45 @@ public class PlayerMovement : MonoBehaviour
     public float maxForce;
     public float jumpForce;
     public bool grounded;
+    public bool touchingWall;
     public Camera camera;
     private Vector2 move, look;
     private float lookRotation;
     private bool sprinting;
 
+    [SerializeField]
+    private Animator animator;
+
+
+    //IK
 
     public void OnMove(InputAction.CallbackContext context)
     {
         move = context.ReadValue<Vector2>();
+        if (!sprinting)
+        {
+            if((!context.started || context.performed) ^context.canceled){
+                animator.SetInteger("MovSpeed", 1);
+            }
+            else
+            {
+                animator.SetInteger("MovSpeed", 0);
+            }
+            
+        }
+    }
+
+    public void OnSprint(InputAction.CallbackContext context)
+    {
+        sprinting = (!context.started || context.performed) ^ context.canceled;
+        if (sprinting)
+        {
+            animator.SetInteger("MovSpeed", 2);
+        }
+        else
+        {
+            animator.SetInteger("MovSpeed", 0);
+        }           
     }
 
     public void OnLook(InputAction.CallbackContext context)
@@ -35,14 +65,6 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.LeftShift))
-        {
-            sprinting = true;
-        }
-        if (Input.GetKeyUp(KeyCode.LeftShift))
-        {
-            sprinting = false;
-        }
     }
 
     private void FixedUpdate()
@@ -65,6 +87,7 @@ public class PlayerMovement : MonoBehaviour
     void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
+
     }
 
     void mov()
@@ -95,6 +118,7 @@ public class PlayerMovement : MonoBehaviour
 
         if (grounded)
         {
+            animator.SetBool("Jumping",true);
             jumpForces = Vector3.up * jumpForce;
         }
         rb.AddForce(jumpForces,ForceMode.VelocityChange);
@@ -103,7 +127,18 @@ public class PlayerMovement : MonoBehaviour
     public void setGrounded(bool st)
     {
         grounded = st;
+        if (st)
+        {
+            animator.SetBool("Jumping", false);
+        }
     }
 
-
+    public void setTouchingWalls(bool st)
+    {
+        touchingWall = st;
+        if (st)
+        {
+            
+        }
+    }
 }

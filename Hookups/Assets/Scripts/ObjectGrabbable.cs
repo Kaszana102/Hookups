@@ -9,8 +9,8 @@ public class ObjectGrabbable : MonoBehaviour, IGrabbable
     private Collider collider;
     private DamageableObject damageableObject;
     public DamageableObject DamObj {get;set;}
-    [SerializeField] public float lerpSpeed;
-    [SerializeField] public float throwForce;
+    [SerializeField] public float lerpSpeed =32;
+    [SerializeField] public float throwForce = 1000;
 
 
     private void Awake()
