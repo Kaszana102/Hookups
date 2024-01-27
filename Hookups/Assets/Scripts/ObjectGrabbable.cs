@@ -2,13 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ObjectGrabbable : MonoBehaviour, IGrabbable
+public class ObjectGrabbable : MonoBehaviour, IGrabbable, IThrowable, IDamaging
 {
     private Rigidbody rb;
     private Transform objectGrabPointTransform;
     private Collider collider;
-    private DamageableObject damageableObject;
-    public DamageableObject DamObj {get;set;}
+    public DamageableObject damageableObject;
     [SerializeField] public float lerpSpeed =32;
     [SerializeField] public float throwForce = 1000;
 
@@ -47,10 +46,20 @@ public class ObjectGrabbable : MonoBehaviour, IGrabbable
         if (objectGrabPointTransform != null)
         {
             Vector3 forceVector = objectGrabPointTransform.forward.normalized*throwForce;
-            DamObj = damageableObject;
+            this.damageableObject = damageableObject;
             drop();
             rb.AddForce(forceVector, ForceMode.Impulse);
         }
         
+    }
+
+    public int howMany()
+    {
+        return 4;
+    }
+
+    public IDamageable thrower()
+    {
+        return this.damageableObject;
     }
 }

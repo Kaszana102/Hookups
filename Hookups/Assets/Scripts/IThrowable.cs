@@ -4,5 +4,5 @@ using UnityEngine;
 
 public interface IThrowable
 {
-    
+    void throwObject(DamageableObject damageableObject);
 }

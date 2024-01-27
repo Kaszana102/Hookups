@@ -6,5 +6,4 @@ public interface IGrabbable
 {
     void grab(Transform objectGrabPointTransform);
     void drop();
-    void throwObject(DamageableObject damageableObject);
 }
