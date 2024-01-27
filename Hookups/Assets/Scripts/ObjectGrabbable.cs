@@ -6,24 +6,28 @@ public class ObjectGrabbable : MonoBehaviour, IGrabbable
 {
     private Rigidbody rb;
     private Transform objectGrabPointTransform;
+    private Collider collider;
     [SerializeField] public float lerpSpeed;
     [SerializeField] public float throwForce;
+
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
-        rb.useGravity = false;
+        collider = GetComponent<Collider>();
     }
 
     public void grab(Transform objectGrabPointTransform)
     {
         this.objectGrabPointTransform = objectGrabPointTransform;
+        collider.enabled = false;
     }
 
     public void drop() 
     {
         this.objectGrabPointTransform = null;
         rb.useGravity = true;
+        collider.enabled = true;
     }
 
     private void FixedUpdate()

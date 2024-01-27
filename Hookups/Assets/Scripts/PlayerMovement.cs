@@ -15,6 +15,7 @@ public class PlayerMovement : MonoBehaviour
     public Camera camera;
     private Vector2 move, look;
     private float lookRotation;
+    private bool sprinting;
 
     [SerializeField]
     private Animator animator;
@@ -33,6 +34,18 @@ public class PlayerMovement : MonoBehaviour
     public void OnJump(InputAction.CallbackContext context)
     {
         jmp();
+    }
+
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.LeftShift))
+        {
+            sprinting = true;
+        }
+        if (Input.GetKeyUp(KeyCode.LeftShift))
+        {
+            sprinting = false;
+        }
     }
 
     private void FixedUpdate()
@@ -58,17 +71,17 @@ public class PlayerMovement : MonoBehaviour
 
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-    
-    }
-
     void mov()
     {
             Vector3 currentVelocity = rb.velocity;
         Vector3 targetVelocity = new Vector3(move.x,0f, move.y);
-        targetVelocity *= speed;
+        if (sprinting)
+        {
+            targetVelocity *= (speed*2f);
+        }else{
+            targetVelocity *= speed;
+        }
+        
 
         targetVelocity = transform.TransformDirection(targetVelocity);
 
@@ -77,7 +90,7 @@ public class PlayerMovement : MonoBehaviour
 
         Vector3.ClampMagnitude(velocityChange,maxForce);
 
-        rb.AddForce(velocityChange,ForceMode.Acceleration);
+        rb.AddForce(velocityChange,ForceMode.Impulse);
     }
 
     void jmp()
@@ -100,4 +113,6 @@ public class PlayerMovement : MonoBehaviour
             animator.SetBool("Jumping", false);
         }
     }
+
+
 }
