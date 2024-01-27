@@ -13,6 +13,8 @@ public class PlayerMovement : MonoBehaviour
     public float jumpForce;
     public bool grounded;
     public bool touchingWall;
+    private float lastDashed = 0;
+    private int availbleJumps = 0;
     public Camera camera;
     private Vector2 move, look;
     private float lookRotation;
@@ -60,7 +62,21 @@ public class PlayerMovement : MonoBehaviour
 
     public void OnJump(InputAction.CallbackContext context)
     {
-        jmp();
+        if (context.started)
+        {
+            jmp();
+        }
+    }
+
+    public void OnDash(InputAction.CallbackContext context)
+    {
+        if (context.started && Time.time > lastDashed + 3f)
+        {
+            lastDashed = Time.time;
+            Vector3 forward = transform.forward * 10000;
+
+            rb.AddForce(forward);
+        }
     }
 
     void Update()
@@ -92,7 +108,7 @@ public class PlayerMovement : MonoBehaviour
 
     void mov()
     {
-            Vector3 currentVelocity = rb.velocity;
+        Vector3 currentVelocity = rb.velocity;
         Vector3 targetVelocity = new Vector3(move.x,0f, move.y);
         if (sprinting)
         {
@@ -115,9 +131,10 @@ public class PlayerMovement : MonoBehaviour
     void jmp()
     {
         Vector3 jumpForces = Vector3.zero;
-
-        if (grounded)
+        
+        if (availbleJumps > 0)
         {
+            availbleJumps--;
             animator.SetBool("Jumping",true);
             jumpForces = Vector3.up * jumpForce;
         }
@@ -129,16 +146,8 @@ public class PlayerMovement : MonoBehaviour
         grounded = st;
         if (st)
         {
+            availbleJumps = 1;
             animator.SetBool("Jumping", false);
-        }
-    }
-
-    public void setTouchingWalls(bool st)
-    {
-        touchingWall = st;
-        if (st)
-        {
-            
         }
     }
 }
