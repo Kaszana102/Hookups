@@ -116,7 +116,12 @@ public class PlayerMovement : MonoBehaviour
     {
         Vector3 jumpForces = Vector3.zero;
 
-        if (grounded)
+        if (touchingWall)
+        {
+            animator.SetBool("Jumping", true);
+            jumpForces = Vector3.up * jumpForce;
+        }
+        else if (grounded)
         {
             animator.SetBool("Jumping",true);
             jumpForces = Vector3.up * jumpForce;

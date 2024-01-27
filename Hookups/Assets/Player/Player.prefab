@@ -289,6 +289,7 @@ MonoBehaviour:
   maxForce: 500
   jumpForce: 3
   grounded: 1
+  touchingWall: 0
   camera: {fileID: 3686550468584431377}
   animator: {fileID: 5632633397660144342}
 --- !u!114 &4941472223934764628
@@ -564,7 +565,7 @@ GameObject:
   m_Component:
   - component: {fileID: 437604960950425096}
   - component: {fileID: 3143393805138313397}
-  - component: {fileID: 8868778795785233519}
+  - component: {fileID: 4848009888406610248}
   m_Layer: 3
   m_Name: WallCheck
   m_TagString: Untagged
@@ -608,7 +609,7 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.8, y: 0.2, z: 0.8}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &8868778795785233519
+--- !u!114 &4848009888406610248
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -617,7 +618,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 6852717593622170423}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e9473dfcef0564017a3bac04f27f161a, type: 3}
+  m_Script: {fileID: 11500000, guid: 4c57da35d2830d144bbcdab22936dcf8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   playerMovement: {fileID: 8029654280528434540}
