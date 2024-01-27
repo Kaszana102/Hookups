@@ -6,30 +6,46 @@ public class ObjectGrabbable : MonoBehaviour, IGrabbable
 {
     private Rigidbody rb;
     private Transform objectGrabPointTransform;
-    private Collider collider;
+    private GameObject colliders;
     private DamageableObject damageableObject;
     public DamageableObject DamObj {get;set;}
     [SerializeField] public float lerpSpeed =32;
     [SerializeField] public float throwForce = 1000;
 
+    [SerializeField]
+    AudioClip grabAudio, throwAudio,dropAudio;
+    AudioSource grabAudioSourc, throwAudioSource, dropAudioSource;
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
-        collider = GetComponent<Collider>();
+        colliders = transform.Find("Colliders").gameObject;
+    }
+
+    private void Start()
+    {
+        grabAudioSourc = gameObject.AddComponent<AudioSource>();
+        throwAudioSource = gameObject.AddComponent<AudioSource>();
+        dropAudioSource = gameObject.AddComponent<AudioSource>();
+
+        grabAudioSourc.clip = grabAudio;
+        throwAudioSource.clip = throwAudio;
+        dropAudioSource.clip = dropAudio;
     }
 
     public void grab(Transform objectGrabPointTransform)
     {
         this.objectGrabPointTransform = objectGrabPointTransform;
-        collider.enabled = false;
+        colliders.SetActive(false);
+        grabAudioSourc.Play();
     }
 
     public void drop() 
     {
         this.objectGrabPointTransform = null;
         rb.useGravity = true;
-        collider.enabled = true;
+        colliders.SetActive(true);
+        dropAudioSource.Play();
     }
 
     private void FixedUpdate()
@@ -50,6 +66,7 @@ public class ObjectGrabbable : MonoBehaviour, IGrabbable
             DamObj = damageableObject;
             drop();
             rb.AddForce(forceVector, ForceMode.Impulse);
+            throwAudioSource.Play();
         }
         
     }
