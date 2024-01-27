@@ -7,8 +7,8 @@ public class ObjectGrabbable : MonoBehaviour, IGrabbable
     private Rigidbody rb;
     private Transform objectGrabPointTransform;
     private Collider collider;
-    [SerializeField] public float lerpSpeed;
-    [SerializeField] public float throwForce;
+    [SerializeField] public float lerpSpeed =32;
+    [SerializeField] public float throwForce = 1000;
 
 
     private void Awake()

@@ -171,6 +171,17 @@
                 },
                 {
                     "name": "",
+                    "id": "7e630ed4-fbda-47e4-a23c-3fc6c6b626f0",
+                    "path": "<Gamepad>/leftShoulder",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Sprint",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "a6cee555-15f4-4c8f-991a-a3030f46ba75",
                     "path": "<Gamepad>/buttonEast",
                     "interactions": "",
