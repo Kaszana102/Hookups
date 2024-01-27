@@ -35,7 +35,7 @@ public class PickupDrop : MonoBehaviour
     public void OnThrow(InputAction.CallbackContext context)
     {
         if (grabbedItem != null){
-            grabbable.throwObject(GetComponent<DamageableObject>());
+            grabbedItem.throwObject(GetComponent<DamageableObject>());
             animator.SetTrigger("Throw");
             animator.SetBool("Holding", false);
             grabbedItem = null;
