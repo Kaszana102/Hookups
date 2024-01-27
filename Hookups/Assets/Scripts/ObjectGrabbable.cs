@@ -7,6 +7,8 @@ public class ObjectGrabbable : MonoBehaviour, IGrabbable
     private Rigidbody rb;
     private Transform objectGrabPointTransform;
     private Collider collider;
+    private DamageableObject damageableObject;
+    public DamageableObject DamObj {get;set;}
     [SerializeField] public float lerpSpeed;
     [SerializeField] public float throwForce;
 
@@ -40,11 +42,12 @@ public class ObjectGrabbable : MonoBehaviour, IGrabbable
         }
     }
 
-    public void throwObject()
+    public void throwObject(DamageableObject damageableObject)
     {
         if (objectGrabPointTransform != null)
         {
             Vector3 forceVector = objectGrabPointTransform.forward.normalized*throwForce;
+            DamObj = damageableObject;
             drop();
             rb.AddForce(forceVector, ForceMode.Impulse);
         }
