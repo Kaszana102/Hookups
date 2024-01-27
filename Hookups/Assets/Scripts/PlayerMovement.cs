@@ -12,6 +12,7 @@ public class PlayerMovement : MonoBehaviour
     public float maxForce;
     public float jumpForce;
     public bool grounded;
+    public bool touchingWall;
     public Camera camera;
     private Vector2 move, look;
     private float lookRotation;
@@ -19,6 +20,9 @@ public class PlayerMovement : MonoBehaviour
 
     [SerializeField]
     private Animator animator;
+
+
+    //IK
 
     public void OnMove(InputAction.CallbackContext context)
     {
@@ -129,5 +133,12 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-
+    public void setTouchingWalls(bool st)
+    {
+        touchingWall = st;
+        if (st)
+        {
+            
+        }
+    }
 }
