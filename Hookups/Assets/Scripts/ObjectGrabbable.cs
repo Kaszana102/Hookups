@@ -8,7 +8,9 @@ public class ObjectGrabbable : MonoBehaviour, IGrabbable
     private Transform objectGrabPointTransform;
     private GameObject colliders;
     private DamageableObject damageableObject;
+    protected PickupDrop player;
     public DamageableObject DamObj {get;set;}
+
     [SerializeField] public float lerpSpeed =32;
     [SerializeField] public float throwForce = 1000;
 
@@ -33,11 +35,14 @@ public class ObjectGrabbable : MonoBehaviour, IGrabbable
         dropAudioSource.clip = dropAudio;
     }
 
-    public void grab(Transform objectGrabPointTransform)
+    public void grab(Transform objectGrabPointTransform, PickupDrop player)
     {
         this.objectGrabPointTransform = objectGrabPointTransform;
         colliders.SetActive(false);
         grabAudioSourc.Play();
+        rb.velocity = Vector3.zero;
+        this.player = player;
+        rb.isKinematic = true;
     }
 
     public void drop() 
@@ -46,6 +51,8 @@ public class ObjectGrabbable : MonoBehaviour, IGrabbable
         rb.useGravity = true;
         colliders.SetActive(true);
         dropAudioSource.Play();
+        player = null;
+        rb.isKinematic = false;
     }
 
     private void FixedUpdate()
@@ -67,6 +74,8 @@ public class ObjectGrabbable : MonoBehaviour, IGrabbable
             drop();
             rb.AddForce(forceVector, ForceMode.Impulse);
             throwAudioSource.Play();
+            player = null;
+            rb.isKinematic = false;
         }
         
     }

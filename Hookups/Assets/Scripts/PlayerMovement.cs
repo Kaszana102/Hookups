@@ -23,6 +23,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField]
     private Animator animator;
 
+    private bool thrown = false;
 
     //IK
 
@@ -108,24 +109,26 @@ public class PlayerMovement : MonoBehaviour
 
     void mov()
     {
-        Vector3 currentVelocity = rb.velocity;
-        Vector3 targetVelocity = new Vector3(move.x,0f, move.y);
-        if (sprinting)
-        {
-            targetVelocity *= (speed*2f);
-        }else{
-            targetVelocity *= speed;
+        if (!thrown) {
+            Vector3 currentVelocity = rb.velocity;
+            Vector3 targetVelocity = new Vector3(move.x, 0f, move.y);
+            if (sprinting)
+            {
+                targetVelocity *= (speed * 2f);
+            } else {
+                targetVelocity *= speed;
+            }
+
+
+            targetVelocity = transform.TransformDirection(targetVelocity);
+
+            Vector3 velocityChange = targetVelocity - currentVelocity;
+            velocityChange = new Vector3(velocityChange.x, 0, velocityChange.z);
+
+            Vector3.ClampMagnitude(velocityChange, maxForce);
+
+            rb.AddForce(velocityChange, ForceMode.Impulse);
         }
-        
-
-        targetVelocity = transform.TransformDirection(targetVelocity);
-
-        Vector3 velocityChange = targetVelocity - currentVelocity;
-        velocityChange = new Vector3(velocityChange.x, 0, velocityChange.z);
-
-        Vector3.ClampMagnitude(velocityChange,maxForce);
-
-        rb.AddForce(velocityChange,ForceMode.Impulse);
     }
 
     void jmp()
@@ -150,4 +153,10 @@ public class PlayerMovement : MonoBehaviour
             animator.SetBool("Jumping", false);
         }
     }
+
+    public void setThrown(bool st)
+    {
+        thrown = st;
+    }
+    
 }
