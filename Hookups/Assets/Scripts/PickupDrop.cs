@@ -31,4 +31,12 @@ public class PickupDrop : MonoBehaviour
                 grabbable = null;
             }
     }
+
+    public void OnThrow(InputAction.CallbackContext context)
+    {
+        if (grabbable != null){
+            grabbable.throwObject();
+        }
+
+    }
 }

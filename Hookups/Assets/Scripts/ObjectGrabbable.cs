@@ -7,6 +7,7 @@ public class ObjectGrabbable : MonoBehaviour, IGrabbable
     private Rigidbody rb;
     private Transform objectGrabPointTransform;
     [SerializeField] public float lerpSpeed;
+    [SerializeField] public float throwForce;
 
     private void Awake()
     {
@@ -35,4 +36,14 @@ public class ObjectGrabbable : MonoBehaviour, IGrabbable
         }
     }
 
+    public void throwObject()
+    {
+        if (objectGrabPointTransform != null)
+        {
+            Vector3 forceVector = objectGrabPointTransform.forward.normalized*throwForce;
+            drop();
+            rb.AddForce(forceVector, ForceMode.Impulse);
+        }
+        
+    }
 }
