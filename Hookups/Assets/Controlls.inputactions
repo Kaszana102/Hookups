@@ -231,7 +231,7 @@
                 {
                     "name": "",
                     "id": "b049407c-fb1b-433b-a064-98e82814792d",
-                    "path": "<Mouse>/leftButton",
+                    "path": "<Keyboard>/t",
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard&Mouse",
@@ -249,7 +249,6 @@
                     "action": "Grab",
                     "isComposite": false,
                     "isPartOfComposite": false
-
                 }
             ]
         },
