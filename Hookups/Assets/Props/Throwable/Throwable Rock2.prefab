@@ -57,6 +57,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9e708ea63eb35f74eb202ca05a155ce1, type: 3}
+--- !u!1 &752649262747950205 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3570757734497929015, guid: 9e708ea63eb35f74eb202ca05a155ce1, type: 3}
+  m_PrefabInstance: {fileID: 4322351431638539082}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &7000042181814685184 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6546324002857014602, guid: 9e708ea63eb35f74eb202ca05a155ce1, type: 3}
@@ -70,9 +75,13 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2695781678443115737, guid: b249f19f064421f42b95f4fe2ee363b7, type: 3}
+      propertyPath: colliders
+      value: 
+      objectReference: {fileID: 752649262747950205}
     - target: {fileID: 4735875243835627007, guid: b249f19f064421f42b95f4fe2ee363b7, type: 3}
       propertyPath: m_Name
-      value: ThrowableBase (1) Variant
+      value: Throwable Rock2
       objectReference: {fileID: 0}
     - target: {fileID: 6915127688906590441, guid: b249f19f064421f42b95f4fe2ee363b7, type: 3}
       propertyPath: m_LocalPosition.x

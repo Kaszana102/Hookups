@@ -7,8 +7,8 @@ public class PickupDrop : ObjectGrabbable
 {
 
     [SerializeField] private Transform playerCameraTransform;
-    [SerializeField] private Transform objectGrabPointTransformSource;
-    [SerializeField] private LayerMask pickupLayerMask;
+    [SerializeField] private Transform objectGrabPointTransformSource;    
+    [SerializeField] private int visibleForPlayerMask;
     public ObjectGrabbable grabbedItem;
 
     [SerializeField]
@@ -30,6 +30,7 @@ public class PickupDrop : ObjectGrabbable
                         grabbedItem.damageableObject = GetComponent<DamageableObject>();
                         grabbedItem.grab(objectGrabPointTransformSource, grabbedItem.damageableObject, this);
                         animator.SetBool("Holding", true);
+                        grabbedItem.gameObject.layer = visibleForPlayerMask;
                     }                    
                 }
             }
@@ -42,6 +43,7 @@ public class PickupDrop : ObjectGrabbable
             grabbedItem.throwObject(GetComponent<DamageableObject>());
             animator.SetTrigger("Throw");
             animator.SetBool("Holding", false);
+            grabbedItem.gameObject.layer = 0;
             grabbedItem = null;
         }
     }
@@ -52,6 +54,7 @@ public class PickupDrop : ObjectGrabbable
         {
             grabbedItem.drop();
             animator.SetBool("Holding", false);
+            grabbedItem.gameObject.layer = 0;
             grabbedItem = null;
         }
     }
