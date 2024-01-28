@@ -9,7 +9,7 @@ public class PickupDrop : MonoBehaviour
     [SerializeField] private Transform playerCameraTransform;
     [SerializeField] private Transform objectGrabPointTransform;
     [SerializeField] private LayerMask pickupLayerMask;
-    private IGrabbable grabbedItem;
+    private ObjectGrabbable grabbedItem;
 
     [SerializeField]
     private Animator animator;
@@ -21,11 +21,12 @@ public class PickupDrop : MonoBehaviour
             if (Physics.Raycast(playerCameraTransform.position, playerCameraTransform.forward, out RaycastHit raycastHit, pickupDistance))
             {
                 Debug.Log(raycastHit);
-                IGrabbable grabbable;
+                ObjectGrabbable grabbable;
                 if (raycastHit.transform.TryGetComponent(out grabbable))
                 {
                     grabbedItem = grabbable;
-                    grabbedItem.grab(objectGrabPointTransform);
+                    grabbedItem.damageableObject = GetComponent<DamageableObject>();
+                    grabbedItem.grab(objectGrabPointTransform, grabbedItem.damageableObject);
                     animator.SetBool("Holding", true);
                 }
             }

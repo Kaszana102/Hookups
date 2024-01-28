@@ -4,7 +4,7 @@ using UnityEngine;
 
 public interface IGrabbable
 {
-    void grab(Transform objectGrabPointTransform);
+    void grab(Transform objectGrabPointTransform, DamageableObject thrower);
     void drop();
     void throwObject(DamageableObject damageableObject);
 }

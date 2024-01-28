@@ -9,16 +9,30 @@ public class DamageableObject : MonoBehaviour
     void OnCollisionEnter(Collision collision)
     {
         var grabbable = collision.gameObject.GetComponent<ObjectGrabbable>();
-        if (grabbable == null || grabbable.DamObj == null) return;
-        var tag = collision.gameObject.tag;
-        if (tag == "DamageObject" && !grabbable.DamObj.Equals(this))
+        receiveDamage(grabbable,collision.gameObject.tag);
+    }
+
+    public void receiveDamage(ObjectGrabbable grabbable, string tag)
+    {
+        if (grabbable == null || grabbable.damageableObject == null) return;
+        if (tag == "Untagged" && !grabbable.damageableObject.Equals(this))
         {
-            
             if (healthPoints > 0)
             {
-                healthPoints -= 1;
-            }
-            
+                healthPoints -= grabbable.damage;
+            }   
+        }
+    }
+
+    public void receiveHoldingDamage(ObjectGrabbable grabbable, string tag)
+    {
+        if (grabbable == null || grabbable.damageableObject == null) return;
+        if (tag == "Untagged" && grabbable.damageableObject.Equals(this))
+        {
+            if (healthPoints > 0)
+            {
+                healthPoints -= grabbable.damage;
+            }   
         }
     }
 }
