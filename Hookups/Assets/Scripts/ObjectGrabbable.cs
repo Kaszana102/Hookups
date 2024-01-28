@@ -6,13 +6,13 @@ public class ObjectGrabbable : MonoBehaviour, IGrabbable
 {
     private Rigidbody rb;
     private Transform objectGrabPointTransform;
-    private GameObject colliders;
     private DamageableObject damageableObject;
     protected PickupDrop player;
     public DamageableObject DamObj {get;set;}
 
     [SerializeField] public float lerpSpeed =32;
     [SerializeField] public float throwForce = 1000;
+    [SerializeField] private GameObject colliders = null;
 
     [SerializeField]
     AudioClip grabAudio, throwAudio,dropAudio;
@@ -21,7 +21,10 @@ public class ObjectGrabbable : MonoBehaviour, IGrabbable
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
-        colliders = transform.Find("Colliders").gameObject;
+        
+        if (!colliders)
+            colliders = transform.Find("Colliders").gameObject;
+        
     }
 
     private void Start()
