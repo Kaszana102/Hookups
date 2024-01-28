@@ -88,11 +88,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 94ef1fe04172642a89036fab7b4a4c3c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damageableObject: {fileID: 0}
   lerpSpeed: 32
   throwForce: 1000
-  grabAudio: {fileID: 0}
-  throwAudio: {fileID: 0}
-  dropAudio: {fileID: 0}
+  colliders: {fileID: 4965985466806261223}
+  grabAudio: {fileID: 8300000, guid: 6b45aad2fce9cd3479978960dbbfd005, type: 3}
+  throwAudio: {fileID: 8300000, guid: 513cf4ad9e72e4d478e285d93a9a009a, type: 3}
+  dropAudio: {fileID: 8300000, guid: 513cf4ad9e72e4d478e285d93a9a009a, type: 3}
   damage: 1
 --- !u!4 &1616629629010767235 stripped
 Transform:
