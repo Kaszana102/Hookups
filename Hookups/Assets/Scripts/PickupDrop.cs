@@ -28,7 +28,7 @@ public class PickupDrop : ObjectGrabbable
                     {
                         grabbedItem = grabbable;
                         grabbedItem.damageableObject = GetComponent<DamageableObject>();
-                        grabbedItem.grab(objectGrabPointTransform, grabbedItem.damageableObject, this);
+                        grabbedItem.grab(objectGrabPointTransformSource, grabbedItem.damageableObject, this);
                         animator.SetBool("Holding", true);
                     }                    
                 }
