@@ -8,9 +8,12 @@ public class ObjectGrabbable : MonoBehaviour, IGrabbable
     protected Rigidbody rb;
     protected Transform objectGrabPointTransform;
     protected PickupDrop player;
-    public DamageableObject damageableObject;
 
-    [SerializeField] public float lerpSpeed =32;
+    public DamageableObject damageableObject { get; set; }
+    public bool thrown { get; set; }
+    public bool grounded { get; set; }
+
+    [SerializeField] public float lerpSpeed = 32;
     [SerializeField] public float throwForce = 1000;
     [SerializeField] protected GameObject colliders = null;
 
@@ -22,10 +25,7 @@ public class ObjectGrabbable : MonoBehaviour, IGrabbable
     protected void Awake()
     {
         rb = GetComponent<Rigidbody>();
-        
-        if (!colliders)
-            colliders = transform.Find("Colliders").gameObject;
-        
+        colliders ??= transform.Find("Colliders").gameObject;
     }
 
     protected void Start()
@@ -42,7 +42,7 @@ public class ObjectGrabbable : MonoBehaviour, IGrabbable
     public virtual void grab(Transform objectGrabPointTransform, DamageableObject thrower, PickupDrop player)
     {
         this.objectGrabPointTransform = objectGrabPointTransform;
-        colliders.SetActive(false);
+        //colliders.SetActive(false);
         grabAudioSourc.Play();
         rb.velocity = Vector3.zero;
         this.player = player;
@@ -53,7 +53,7 @@ public class ObjectGrabbable : MonoBehaviour, IGrabbable
     {
         objectGrabPointTransform = null;
         rb.useGravity = true;
-        colliders.SetActive(true);
+        //colliders.SetActive(true);
         dropAudioSource.Play();
         player = null;
         rb.isKinematic = false;
@@ -67,6 +67,9 @@ public class ObjectGrabbable : MonoBehaviour, IGrabbable
             rb.MovePosition(newPosition);
             rb.useGravity = false;
         }
+        
+        if (grounded)
+            thrown = false;
     }
 
     public virtual void throwObject(DamageableObject damageableObject)
@@ -74,6 +77,10 @@ public class ObjectGrabbable : MonoBehaviour, IGrabbable
         if (objectGrabPointTransform != null)
         {
             Vector3 forceVector = objectGrabPointTransform.forward.normalized*throwForce;
+
+            Debug.Log(forceVector);
+            thrown = true;
+
             this.damageableObject = damageableObject;
             drop();
             rb.AddForce(forceVector, ForceMode.Impulse);
@@ -81,6 +88,5 @@ public class ObjectGrabbable : MonoBehaviour, IGrabbable
             player = null;
             rb.isKinematic = false;
         }
-        
     }
 }
