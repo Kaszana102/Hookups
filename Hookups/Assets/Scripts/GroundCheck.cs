@@ -4,31 +4,28 @@ using UnityEngine;
 
 public class GroundCheck : MonoBehaviour
 {
-    public PlayerMovement playerMovement;
+    public ObjectGrabbable grabbable;
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject == playerMovement.gameObject)
-        {
+        if (other.gameObject == grabbable.gameObject)
             return;
-        }
-        playerMovement.setGrounded(true);
+        
+        grabbable.grounded = true;
     }
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.gameObject == playerMovement.gameObject)
-        {
+        if (other.gameObject == grabbable.gameObject)
             return;
-        }
-        playerMovement.setGrounded(false);
+        
+        grabbable.grounded = false;
     }
 
     private void OnTriggerStay(Collider other)
     {
-        if (other.gameObject == playerMovement.gameObject)
-        {
+        if (other.gameObject == grabbable.gameObject)
             return;
-        }
-        playerMovement.setGrounded(true);
+        
+        grabbable.grounded = true;
     }
 }
