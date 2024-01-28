@@ -12,6 +12,14 @@ PrefabInstance:
       propertyPath: colliders
       value: 
       objectReference: {fileID: 1836346225316749918}
+    - target: {fileID: 2695781678443115737, guid: b249f19f064421f42b95f4fe2ee363b7, type: 3}
+      propertyPath: grabAudio
+      value: 
+      objectReference: {fileID: 8300000, guid: f1434567dc7408346ba4d57e563b12a3, type: 3}
+    - target: {fileID: 2695781678443115737, guid: b249f19f064421f42b95f4fe2ee363b7, type: 3}
+      propertyPath: throwAudio
+      value: 
+      objectReference: {fileID: 8300000, guid: 85c41914fd60b9242bb8e73a14dc09ba, type: 3}
     - target: {fileID: 4735875243835627007, guid: b249f19f064421f42b95f4fe2ee363b7, type: 3}
       propertyPath: m_Name
       value: T_Cow Variant

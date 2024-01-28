@@ -57,6 +57,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f9f051019a2a26a41afa85737673e58b, type: 3}
+--- !u!1 &488541934390752224 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1620766331445077134, guid: f9f051019a2a26a41afa85737673e58b, type: 3}
+  m_PrefabInstance: {fileID: 1205196862077556590}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &6922590917182270030 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8117813008680549664, guid: f9f051019a2a26a41afa85737673e58b, type: 3}
@@ -70,6 +75,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2695781678443115737, guid: b249f19f064421f42b95f4fe2ee363b7, type: 3}
+      propertyPath: colliders
+      value: 
+      objectReference: {fileID: 488541934390752224}
     - target: {fileID: 4735875243835627007, guid: b249f19f064421f42b95f4fe2ee363b7, type: 3}
       propertyPath: m_Name
       value: Throwable Bush Variant
@@ -148,63 +157,10 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 6915127688906590441, guid: b249f19f064421f42b95f4fe2ee363b7, type: 3}
       insertIndex: -1
       addedObject: {fileID: 6922590917182270030}
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 969015623416639629, guid: b249f19f064421f42b95f4fe2ee363b7, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 8292614108639810079}
-    - targetCorrespondingSourceObject: {fileID: 969015623416639629, guid: b249f19f064421f42b95f4fe2ee363b7, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 5514975771013029486}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b249f19f064421f42b95f4fe2ee363b7, type: 3}
 --- !u!4 &1047079027846892434 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6915127688906590441, guid: b249f19f064421f42b95f4fe2ee363b7, type: 3}
   m_PrefabInstance: {fileID: 5868347728289694587}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &6629911876394349558 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 969015623416639629, guid: b249f19f064421f42b95f4fe2ee363b7, type: 3}
-  m_PrefabInstance: {fileID: 5868347728289694587}
-  m_PrefabAsset: {fileID: 0}
---- !u!135 &8292614108639810079
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6629911876394349558}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Radius: 2.1090424
-  m_Center: {x: 0.36639714, y: 1.9810656, z: 0}
---- !u!65 &5514975771013029486
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6629911876394349558}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1, y: 3.1119635, z: 1}
-  m_Center: {x: 0, y: 1.0559818, z: 0}
