@@ -24,7 +24,6 @@ public class PickupDrop : ObjectGrabbable
                 ObjectGrabbable grabbable;
                 if (raycastHit.transform.TryGetComponent(out grabbable))
                 {             
-                    
                     if(player == null || raycastHit.transform != player.transform)
                     {
                         grabbedItem = grabbable;
