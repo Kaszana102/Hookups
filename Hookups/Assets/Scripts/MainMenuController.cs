@@ -10,8 +10,9 @@ public class MainMenuController : MonoBehaviour
     public int scene = 2;
     static bool wasPlaying = false;
     public GameObject firstMenu, secondMenu;
+    public GameObject cube1, cube2;
     // Start is called before the first frame update
-    
+
     void Start()
     {
         exit.onClick.AddListener(AppQuit);
@@ -19,6 +20,8 @@ public class MainMenuController : MonoBehaviour
         {
             firstMenu.SetActive(false);
             secondMenu.SetActive(true);
+            cube1.SetActive(false);
+            cube2.SetActive(true);
         }
     }
     public void AppQuit()
