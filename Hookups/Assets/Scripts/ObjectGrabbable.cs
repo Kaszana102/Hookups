@@ -42,7 +42,7 @@ public class ObjectGrabbable : MonoBehaviour, IGrabbable
     public virtual void grab(Transform objectGrabPointTransform, DamageableObject thrower, PickupDrop player)
     {
         this.objectGrabPointTransform = objectGrabPointTransform;
-        //colliders.SetActive(false);
+        colliders.SetActive(false);
         grabAudioSourc.Play();
         rb.velocity = Vector3.zero;
         this.player = player;
@@ -53,7 +53,7 @@ public class ObjectGrabbable : MonoBehaviour, IGrabbable
     {
         objectGrabPointTransform = null;
         rb.useGravity = true;
-        //colliders.SetActive(true);
+        colliders.SetActive(true);
         dropAudioSource.Play();
         player = null;
         rb.isKinematic = false;
@@ -87,6 +87,7 @@ public class ObjectGrabbable : MonoBehaviour, IGrabbable
             throwAudioSource.Play();
             player = null;
             rb.isKinematic = false;
+            colliders.SetActive(true);
         }
     }
 }

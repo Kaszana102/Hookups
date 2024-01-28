@@ -7,7 +7,7 @@ public class DamageableObject : MonoBehaviour
 {
     [SerializeField] public int healthPoints;
     [SerializeField] private Image healthBar;
-    private float maxHealth = 50;
+    private float maxHealth = 10;
 
     // Start is called before the first frame update
     void OnCollisionEnter(Collision collision)
