@@ -12,6 +12,14 @@ PrefabInstance:
       propertyPath: colliders
       value: 
       objectReference: {fileID: 7161820370849595899}
+    - target: {fileID: 2695781678443115737, guid: b249f19f064421f42b95f4fe2ee363b7, type: 3}
+      propertyPath: grabAudio
+      value: 
+      objectReference: {fileID: 8300000, guid: 4424e483fb09b81478a77ff60338d7f4, type: 3}
+    - target: {fileID: 2695781678443115737, guid: b249f19f064421f42b95f4fe2ee363b7, type: 3}
+      propertyPath: throwAudio
+      value: 
+      objectReference: {fileID: 8300000, guid: da66fee7344877b449a22cec7ee4e4c7, type: 3}
     - target: {fileID: 4735875243835627007, guid: b249f19f064421f42b95f4fe2ee363b7, type: 3}
       propertyPath: m_Name
       value: T_Sheep Variant
