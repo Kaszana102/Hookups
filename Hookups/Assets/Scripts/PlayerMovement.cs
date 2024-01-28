@@ -11,7 +11,6 @@ public class PlayerMovement : MonoBehaviour
     public float sensitivity;
     public float maxForce;
     public float jumpForce;
-    public bool grounded;
     public bool touchingWall;
     private float lastDashed = 0;
     private int availbleJumps = 0;
@@ -23,10 +22,9 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField]
     private Animator animator;
 
-    private bool thrown = false;
-
-    //IK
-
+    [SerializeField]
+    private ObjectGrabbable self;
+    
     public void OnMove(InputAction.CallbackContext context)
     {
         move = context.ReadValue<Vector2>();
@@ -39,7 +37,6 @@ public class PlayerMovement : MonoBehaviour
             {
                 animator.SetInteger("MovSpeed", 0);
             }
-            
         }
     }
 
@@ -87,6 +84,11 @@ public class PlayerMovement : MonoBehaviour
     private void FixedUpdate()
     {
         mov();
+        if (self.grounded)
+        {
+            availbleJumps = 1;
+            animator.SetBool("Jumping", false);
+        }
         
     }
 
@@ -109,7 +111,7 @@ public class PlayerMovement : MonoBehaviour
 
     void mov()
     {
-        if (!thrown) {
+        if (!self.thrown) {
             Vector3 currentVelocity = rb.velocity;
             Vector3 targetVelocity = new Vector3(move.x, 0f, move.y);
             if (sprinting)
@@ -143,20 +145,4 @@ public class PlayerMovement : MonoBehaviour
         }
         rb.AddForce(jumpForces,ForceMode.VelocityChange);
     }
-
-    public void setGrounded(bool st)
-    {
-        grounded = st;
-        if (st)
-        {
-            availbleJumps = 1;
-            animator.SetBool("Jumping", false);
-        }
-    }
-
-    public void setThrown(bool st)
-    {
-        thrown = st;
-    }
-    
 }
