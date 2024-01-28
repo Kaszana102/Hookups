@@ -66,8 +66,8 @@ public class PickupDrop : ObjectGrabbable
 
 
     private void SetLayer(Transform target, int layer)
-    {
-        foreach(Transform child in target)
+    {        
+        foreach (Transform child in target.GetComponentsInChildren<Transform>())
         {
             child.gameObject.layer=layer;
         }
