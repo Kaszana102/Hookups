@@ -62,6 +62,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6164847932641575437, guid: f3801d9e7862391f88180876fa3ca93f, type: 3}
   m_PrefabInstance: {fileID: 2606685869894985333}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &8368815631940708409 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5767087500779654732, guid: f3801d9e7862391f88180876fa3ca93f, type: 3}
+  m_PrefabInstance: {fileID: 2606685869894985333}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &8000811073589970979
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -70,6 +75,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2695781678443115737, guid: b249f19f064421f42b95f4fe2ee363b7, type: 3}
+      propertyPath: colliders
+      value: 
+      objectReference: {fileID: 8368815631940708409}
     - target: {fileID: 4735875243835627007, guid: b249f19f064421f42b95f4fe2ee363b7, type: 3}
       propertyPath: m_Name
       value: T_Potion Variant
