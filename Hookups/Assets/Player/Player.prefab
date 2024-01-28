@@ -583,11 +583,7 @@ MonoBehaviour:
   damageableObject: {fileID: 0}
   lerpSpeed: 32
   throwForce: 100
-<<<<<<< HEAD
   colliders: {fileID: 6055375141332366271}
-=======
-  colliders: {fileID: 0}
->>>>>>> 1bf2d54d9fde53b6919774d3a4a611ec9e163077
   grabAudio: {fileID: 0}
   throwAudio: {fileID: 0}
   dropAudio: {fileID: 0}
