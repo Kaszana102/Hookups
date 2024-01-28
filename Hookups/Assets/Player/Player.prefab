@@ -218,7 +218,6 @@ GameObject:
   - component: {fileID: 8029654280528434540}
   - component: {fileID: 4941472223934764628}
   - component: {fileID: 7525399048117535236}
-  - component: {fileID: 9029798417282213378}
   m_Layer: 3
   m_Name: Player
   m_TagString: Untagged
@@ -504,16 +503,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15b7b2707ae3c418e8590185de330fe4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damageableObject: {fileID: 0}
   lerpSpeed: 32
   throwForce: 100
+  colliders: {fileID: 0}
   grabAudio: {fileID: 0}
   throwAudio: {fileID: 0}
   dropAudio: {fileID: 0}
+  damage: 1
   playerCameraTransform: {fileID: 7362106525005933329}
   objectGrabPointTransformSource: {fileID: 192084463395835394}
-  pickupLayerMask:
-    serializedVersion: 2
-    m_Bits: 55
+  visibleForPlayerMask: 0
+  grabbedItem: {fileID: 0}
   animator: {fileID: 5632633397660144342}
 --- !u!1 &6055375141332366271
 GameObject:
@@ -579,6 +580,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 192084463395835394}
+  - component: {fileID: 111662174830856936}
   m_Layer: 0
   m_Name: Holder
   m_TagString: Untagged
@@ -601,6 +603,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 3831771559345560572}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &111662174830856936
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6085956769122566805}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00a1a8c03b9f6994c9e8c75eddf5f4b8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rotSrc: {fileID: 2556256612598032795}
 --- !u!1 &6282101833779271531
 GameObject:
   m_ObjectHideFlags: 0
