@@ -8,6 +8,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2695781678443115737, guid: b249f19f064421f42b95f4fe2ee363b7, type: 3}
+      propertyPath: colliders
+      value: 
+      objectReference: {fileID: 6373572331499503526}
     - target: {fileID: 4735875243835627007, guid: b249f19f064421f42b95f4fe2ee363b7, type: 3}
       propertyPath: m_Name
       value: T_Stairs Variant
@@ -122,6 +126,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f6910a401a29bd9c49ddba9f084d0727, type: 3}
+--- !u!1 &6373572331499503526 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 687692430895767354, guid: f6910a401a29bd9c49ddba9f084d0727, type: 3}
+  m_PrefabInstance: {fileID: 5906566409945440412}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &9072691887554452183 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3175314714792901195, guid: f6910a401a29bd9c49ddba9f084d0727, type: 3}

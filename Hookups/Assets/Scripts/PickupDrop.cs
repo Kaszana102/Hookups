@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class PickupDrop : MonoBehaviour
+public class PickupDrop : ObjectGrabbable
 {
 
     [SerializeField] private Transform playerCameraTransform;
-    [SerializeField] private Transform objectGrabPointTransform;
+    [SerializeField] private Transform objectGrabPointTransformSource;
     [SerializeField] private LayerMask pickupLayerMask;
     private ObjectGrabbable grabbedItem;
 
@@ -23,11 +23,15 @@ public class PickupDrop : MonoBehaviour
                 Debug.Log(raycastHit);
                 ObjectGrabbable grabbable;
                 if (raycastHit.transform.TryGetComponent(out grabbable))
-                {
-                    grabbedItem = grabbable;
-                    grabbedItem.damageableObject = GetComponent<DamageableObject>();
-                    grabbedItem.grab(objectGrabPointTransform, grabbedItem.damageableObject);
-                    animator.SetBool("Holding", true);
+                {             
+                    
+                    if(player == null || raycastHit.transform != player.transform)
+                    {
+                        grabbedItem = grabbable;
+                        grabbedItem.damageableObject = GetComponent<DamageableObject>();
+                        grabbedItem.grab(objectGrabPointTransform, grabbedItem.damageableObject, this);
+                        animator.SetBool("Holding", true);
+                    }                    
                 }
             }
         }        

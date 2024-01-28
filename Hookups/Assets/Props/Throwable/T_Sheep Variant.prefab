@@ -8,6 +8,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2695781678443115737, guid: b249f19f064421f42b95f4fe2ee363b7, type: 3}
+      propertyPath: colliders
+      value: 
+      objectReference: {fileID: 7161820370849595899}
     - target: {fileID: 4735875243835627007, guid: b249f19f064421f42b95f4fe2ee363b7, type: 3}
       propertyPath: m_Name
       value: T_Sheep Variant
@@ -125,5 +129,10 @@ PrefabInstance:
 --- !u!4 &3017473439882191449 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5404825161055162515, guid: 40f621288c3d3e71a98ccd0ec5a902d5, type: 3}
+  m_PrefabInstance: {fileID: 7125244100606161610}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &7161820370849595899 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 108673996525302577, guid: 40f621288c3d3e71a98ccd0ec5a902d5, type: 3}
   m_PrefabInstance: {fileID: 7125244100606161610}
   m_PrefabAsset: {fileID: 0}

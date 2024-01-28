@@ -4,12 +4,15 @@ using UnityEngine;
 
 public class ObjectGrabbable : MonoBehaviour, IGrabbable
 {
+
     protected Rigidbody rb;
     protected Transform objectGrabPointTransform;
-    protected GameObject colliders;
+    protected PickupDrop player;
     public DamageableObject damageableObject;
+
     [SerializeField] public float lerpSpeed =32;
     [SerializeField] public float throwForce = 1000;
+    [SerializeField] private GameObject colliders = null;
 
     [SerializeField]
     protected AudioClip grabAudio, throwAudio,dropAudio;
@@ -19,7 +22,10 @@ public class ObjectGrabbable : MonoBehaviour, IGrabbable
     protected void Awake()
     {
         rb = GetComponent<Rigidbody>();
-        colliders = transform.Find("Colliders").gameObject;
+        
+        if (!colliders)
+            colliders = transform.Find("Colliders").gameObject;
+        
     }
 
     protected void Start()
@@ -33,11 +39,13 @@ public class ObjectGrabbable : MonoBehaviour, IGrabbable
         dropAudioSource.clip = dropAudio;
     }
 
-    public virtual void grab(Transform objectGrabPointTransform,DamageableObject thrower)
+    public virtual void grab(Transform objectGrabPointTransform, DamageableObject thrower, PickupDrop player)
     {
         this.objectGrabPointTransform = objectGrabPointTransform;
         colliders.SetActive(false);
         grabAudioSourc.Play();
+        rb.velocity = Vector3.zero;
+        this.player = player;
         rb.isKinematic = true;
     }
 
@@ -47,6 +55,7 @@ public class ObjectGrabbable : MonoBehaviour, IGrabbable
         rb.useGravity = true;
         colliders.SetActive(true);
         dropAudioSource.Play();
+        player = null;
         rb.isKinematic = false;
     }
 
@@ -69,6 +78,7 @@ public class ObjectGrabbable : MonoBehaviour, IGrabbable
             drop();
             rb.AddForce(forceVector, ForceMode.Impulse);
             throwAudioSource.Play();
+            player = null;
             rb.isKinematic = false;
         }
         
