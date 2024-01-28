@@ -1,10 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class DamageableObject : MonoBehaviour
 {
     [SerializeField] public int healthPoints;
+    [SerializeField] private Image healthBar;
+    private float maxHealth = 50;
+
     // Start is called before the first frame update
     void OnCollisionEnter(Collision collision)
     {
@@ -20,6 +24,7 @@ public class DamageableObject : MonoBehaviour
             if (healthPoints > 0)
             {
                 healthPoints -= grabbable.damage;
+                healthBar.fillAmount = healthPoints / maxHealth;
             }   
         }
     }
@@ -32,6 +37,7 @@ public class DamageableObject : MonoBehaviour
             if (healthPoints > 0)
             {
                 healthPoints -= grabbable.damage;
+                healthBar.fillAmount = healthPoints / maxHealth;
             }   
         }
     }
