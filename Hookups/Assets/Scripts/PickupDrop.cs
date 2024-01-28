@@ -9,7 +9,7 @@ public class PickupDrop : ObjectGrabbable
     [SerializeField] private Transform playerCameraTransform;
     [SerializeField] private Transform objectGrabPointTransformSource;
     [SerializeField] private LayerMask pickupLayerMask;
-    private IGrabbable grabbedItem;
+    private ObjectGrabbable grabbedItem;
 
     [SerializeField]
     private Animator animator;
@@ -21,14 +21,14 @@ public class PickupDrop : ObjectGrabbable
             if (Physics.Raycast(playerCameraTransform.position, playerCameraTransform.forward, out RaycastHit raycastHit, pickupDistance))
             {
                 Debug.Log(raycastHit);
-                IGrabbable grabbable;
+                ObjectGrabbable grabbable;
                 if (raycastHit.transform.TryGetComponent(out grabbable))
                 {             
-                    
                     if(player == null || raycastHit.transform != player.transform)
                     {
                         grabbedItem = grabbable;
-                        grabbedItem.grab(objectGrabPointTransformSource, this);
+                        grabbedItem.damageableObject = GetComponent<DamageableObject>();
+                        grabbedItem.grab(objectGrabPointTransform, grabbedItem.damageableObject, this);
                         animator.SetBool("Holding", true);
                     }                    
                 }
