@@ -8,6 +8,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2695781678443115737, guid: b249f19f064421f42b95f4fe2ee363b7, type: 3}
+      propertyPath: colliders
+      value: 
+      objectReference: {fileID: 4113461175313456165}
     - target: {fileID: 4735875243835627007, guid: b249f19f064421f42b95f4fe2ee363b7, type: 3}
       propertyPath: m_Name
       value: Throwable Rock4
@@ -122,6 +126,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 502c0040c45e45f48a48dfd06d9a6085, type: 3}
+--- !u!1 &4113461175313456165 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1386640802499083015, guid: 502c0040c45e45f48a48dfd06d9a6085, type: 3}
+  m_PrefabInstance: {fileID: 3038704151772948258}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &9195350044287016462 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6176642319676602668, guid: 502c0040c45e45f48a48dfd06d9a6085, type: 3}

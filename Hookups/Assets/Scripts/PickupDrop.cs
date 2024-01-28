@@ -35,8 +35,8 @@ public class PickupDrop : ObjectGrabbable
         grabbedItem = grabbable;
         grabbedItem.damageableObject = GetComponent<DamageableObject>();
         grabbedItem.grab(objectGrabPointTransformSource, grabbedItem.damageableObject, this);
-        animator.SetBool("Holding", true);
-        grabbedItem.gameObject.layer = visibleForPlayerMask;
+        animator.SetBool("Holding", true);        
+        SetLayer(grabbedItem.transform,visibleForPlayerMask);
     }
 
     public void OnThrow(InputAction.CallbackContext context)
@@ -47,8 +47,9 @@ public class PickupDrop : ObjectGrabbable
         grabbedItem.throwObject(GetComponent<DamageableObject>());
         animator.SetTrigger("Throw");
         animator.SetBool("Holding", false);
-        grabbedItem.gameObject.layer = 0;
+        SetLayer(grabbedItem.transform, 0);
         grabbedItem = null;
+
     }
 
     public void OnReleaseHand(InputAction.CallbackContext context)
@@ -59,7 +60,7 @@ public class PickupDrop : ObjectGrabbable
         
         grabbedItem.drop();
         animator.SetBool("Holding", false);
-        grabbedItem.gameObject.layer = 0;
+        SetLayer(grabbedItem.transform,0);
         grabbedItem = null;
     }
 
