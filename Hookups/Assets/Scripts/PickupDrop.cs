@@ -27,10 +27,10 @@ public class PickupDrop : ObjectGrabbable
                     if(player == null || raycastHit.transform != player.transform)
                     {
                         grabbedItem = grabbable;
-                        grabbedItem.damageableObject = GetComponent<DamageableObject>();
+                        grabbedItem.damageableObject = gameObject.GetComponent<DamageableObject>();
                         grabbedItem.grab(objectGrabPointTransformSource, grabbedItem.damageableObject, this);
-                        animator.SetBool("Holding", true);
-                        grabbedItem.gameObject.layer = visibleForPlayerMask;
+                        animator.SetBool("Holding", true);                        
+                        SetLayer(grabbedItem.transform, visibleForPlayerMask);
                     }                    
                 }
             }
@@ -43,7 +43,7 @@ public class PickupDrop : ObjectGrabbable
             grabbedItem.throwObject(GetComponent<DamageableObject>());
             animator.SetTrigger("Throw");
             animator.SetBool("Holding", false);
-            grabbedItem.gameObject.layer = 0;
+            SetLayer(grabbedItem.transform, 0);
             grabbedItem = null;
         }
     }
@@ -54,8 +54,17 @@ public class PickupDrop : ObjectGrabbable
         {
             grabbedItem.drop();
             animator.SetBool("Holding", false);
-            grabbedItem.gameObject.layer = 0;
+            SetLayer(grabbedItem.transform, 0);
             grabbedItem = null;
+        }
+    }
+
+
+    private void SetLayer(Transform target, int layer)
+    {
+        foreach(Transform child in target)
+        {
+            child.gameObject.layer=layer;
         }
     }
 }

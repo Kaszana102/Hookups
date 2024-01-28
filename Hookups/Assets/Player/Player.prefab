@@ -288,7 +288,7 @@ MonoBehaviour:
   speed: 5
   sensitivity: 8
   maxForce: 500
-  jumpForce: 3
+  jumpForce: 8
   grounded: 1
   touchingWall: 0
   camera: {fileID: 3686550468584431377}
