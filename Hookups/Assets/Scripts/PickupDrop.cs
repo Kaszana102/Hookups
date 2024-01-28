@@ -9,7 +9,7 @@ public class PickupDrop : ObjectGrabbable
     [SerializeField] private Transform playerCameraTransform;
     [SerializeField] private Transform objectGrabPointTransformSource;
     [SerializeField] private LayerMask pickupLayerMask;
-    private ObjectGrabbable grabbedItem;
+    public ObjectGrabbable grabbedItem;
 
     [SerializeField]
     private Animator animator;

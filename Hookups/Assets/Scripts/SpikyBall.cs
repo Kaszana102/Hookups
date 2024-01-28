@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SpikyBall : ObjectGrabbable
 {
-    public override void grab(Transform objectGrabPointTransform, DamageableObject thrower)
+    public override void grab(Transform objectGrabPointTransform, DamageableObject thrower, PickupDrop player)
     {
         this.objectGrabPointTransform = objectGrabPointTransform;
         colliders.SetActive(false);

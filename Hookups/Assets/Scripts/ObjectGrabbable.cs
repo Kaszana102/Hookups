@@ -12,7 +12,7 @@ public class ObjectGrabbable : MonoBehaviour, IGrabbable
 
     [SerializeField] public float lerpSpeed =32;
     [SerializeField] public float throwForce = 1000;
-    [SerializeField] private GameObject colliders = null;
+    [SerializeField] protected GameObject colliders = null;
 
     [SerializeField]
     protected AudioClip grabAudio, throwAudio,dropAudio;
