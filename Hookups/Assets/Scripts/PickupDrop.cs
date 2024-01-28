@@ -7,14 +7,14 @@ public class PickupDrop : ObjectGrabbable
 {
 
     [SerializeField] private Transform playerCameraTransform;
-    [SerializeField] private Transform objectGrabPointTransformSource;
-    [SerializeField] private LayerMask pickupLayerMask;
-    private IGrabbable grabbedItem;
+    [SerializeField] private Transform objectGrabPointTransformSource;    
+    [SerializeField] private int visibleForPlayerMask;
+    public ObjectGrabbable grabbedItem;
 
     [SerializeField]
     private Animator animator;
 
-    public void OnGrab(InputAction.CallbackContext context){
+    public void OnGrab(InputAction.CallbackContext context) {
         float pickupDistance = 30f;
         IGrabbable grabbable;
         RaycastHit raycastHit;
@@ -31,9 +31,12 @@ public class PickupDrop : ObjectGrabbable
         if (player != null && raycastHit.transform == player.transform)
             return;
 
+
         grabbedItem = grabbable;
-        grabbedItem.grab(objectGrabPointTransformSource, this);
+        grabbedItem.damageableObject = GetComponent<DamageableObject>();
+        grabbedItem.grab(objectGrabPointTransformSource, grabbedItem.damageableObject, this);
         animator.SetBool("Holding", true);
+        grabbedItem.gameObject.layer = visibleForPlayerMask;
     }
 
     public void OnThrow(InputAction.CallbackContext context)
@@ -44,6 +47,7 @@ public class PickupDrop : ObjectGrabbable
         grabbedItem.throwObject(GetComponent<DamageableObject>());
         animator.SetTrigger("Throw");
         animator.SetBool("Holding", false);
+        grabbedItem.gameObject.layer = 0;
         grabbedItem = null;
     }
 
@@ -54,6 +58,7 @@ public class PickupDrop : ObjectGrabbable
         
         grabbedItem.drop();
         animator.SetBool("Holding", false);
+        grabbedItem.gameObject.layer = 0;
         grabbedItem = null;
     }
 }

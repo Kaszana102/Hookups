@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Security.Permissions;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -129,7 +130,7 @@ public class PlayerMovement : MonoBehaviour
 
             Vector3.ClampMagnitude(velocityChange, maxForce);
 
-            rb.AddForce(velocityChange, ForceMode.Impulse);
+            rb.AddForce(velocityChange, ForceMode.VelocityChange);
         }
     }
 
