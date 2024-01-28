@@ -141,7 +141,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9473dfcef0564017a3bac04f27f161a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerMovement: {fileID: 8029654280528434540}
+  grabbable: {fileID: 7525399048117535236}
 --- !u!1 &2556256612598032795
 GameObject:
   m_ObjectHideFlags: 0
@@ -366,10 +366,10 @@ MonoBehaviour:
   sensitivity: 8
   maxForce: 500
   jumpForce: 8
-  grounded: 1
   touchingWall: 0
   camera: {fileID: 3686550468584431377}
   animator: {fileID: 5632633397660144342}
+  self: {fileID: 7525399048117535236}
 --- !u!114 &4941472223934764628
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -580,7 +580,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15b7b2707ae3c418e8590185de330fe4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damageableObject: {fileID: 0}
   lerpSpeed: 32
   throwForce: 100
   colliders: {fileID: 6055375141332366271}
