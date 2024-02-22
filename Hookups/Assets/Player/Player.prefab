@@ -286,8 +286,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 6565515078733466587}
-  speed: 5
-  sensitivity: 8
+  speed: 0.2
+  sensitivity: 0.2
   maxForce: 500
   jumpForce: 8
   touchingWall: 0
