@@ -16,10 +16,15 @@ public class PlayerMovement : MonoBehaviour
     private float lastDashed = 0;
     private int availbleJumps = 0;
     public Camera camera;
-    private Vector2 look,move;
+    private Vector2 look,moveDirection,movInterpolated=Vector2.zero;
     private float lookRotation;
     private bool sprinting;
+    [SerializeField]
+    [Range(0.01f,0.2f)]
+    float speedingUp = 0.2f;
 
+    float runStartTime = 0;
+    bool running = false;
     bool dashing = false;
     Vector3 dashingDirection = Vector3.zero;    
 
@@ -31,16 +36,18 @@ public class PlayerMovement : MonoBehaviour
     
     public void OnMove(InputAction.CallbackContext context)
     {
-        move = context.ReadValue<Vector2>();        
-        mov(move);
+        moveDirection = context.ReadValue<Vector2>();                
         Debug.Log("PRESSED");
         if (!sprinting)
         {
             if((!context.started || context.performed) ^context.canceled){                
                 animator.SetInteger("MovSpeed", 1);
+                runStartTime = Time.time;
+                running= true;
             }
             else
             {
+                running = false;
                 animator.SetInteger("MovSpeed", 0);
             }
         }
@@ -100,6 +107,15 @@ public class PlayerMovement : MonoBehaviour
         }
         else
         {
+            if (running)
+            {
+                movInterpolated = Vector2.Lerp(movInterpolated, moveDirection, 0.2f);
+            }
+            else
+            {
+                movInterpolated = Vector2.Lerp(movInterpolated, Vector2.zero, 0.2f);
+            }
+            mov(movInterpolated);
             rb.AddForce(Vector3.down * 5);//gravity
         }
         
@@ -129,27 +145,9 @@ public class PlayerMovement : MonoBehaviour
 
     void mov(Vector2 direction)
     {
-        if (!self.thrown) {
-            /*
-            Vector3 currentVelocity = rb.velocity;
-            Vector3 targetVelocity = new Vector3(direction.x, 0f, direction.y);
-            if (sprinting)
-            {
-                targetVelocity *= (speed * 2f);
-            } else {
-                targetVelocity *= speed;
-            }
-
-            targetVelocity = transform.TransformDirection(targetVelocity);
-
-            Vector3 velocityChange = targetVelocity - currentVelocity;
-            velocityChange = new Vector3(velocityChange.x, 0, velocityChange.z);
-
-            Vector3.ClampMagnitude(velocityChange, maxForce);
-
-            //rb.AddForce(velocityChange, ForceMode.VelocityChange);
-            */
+        if (!self.thrown) {            
             Vector3 moveDirecetion = new Vector3(direction.x, 0, direction.y);
+            moveDirecetion = transform.TransformDirection(moveDirecetion);
             if (sprinting)
             {
                 moveDirecetion *= (speed * 2f);
@@ -158,6 +156,8 @@ public class PlayerMovement : MonoBehaviour
             {
                 moveDirecetion *= speed;
             }
+            moveDirecetion *= (Time.time > runStartTime + 0.5f) ? 1 : (Time.time - runStartTime)/0.5f;
+            
             rb.MovePosition(transform.position + moveDirecetion);
         }
     }
