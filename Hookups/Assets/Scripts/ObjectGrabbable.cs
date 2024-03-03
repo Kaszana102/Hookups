@@ -28,7 +28,7 @@ public class ObjectGrabbable : MonoBehaviour, IGrabbable
         colliders ??= transform.Find("Colliders").gameObject;
     }
 
-    protected void Start()
+    virtual protected void Start()
     {
         grabAudioSourc = gameObject.AddComponent<AudioSource>();
         throwAudioSource = gameObject.AddComponent<AudioSource>();

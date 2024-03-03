@@ -29,6 +29,15 @@ public class DamageableObject : MonoBehaviour
         }
     }
 
+    public void receiveDamage(int damage)
+    {        
+        if (healthPoints > 0)
+        {
+            healthPoints -= damage;
+            healthBar.fillAmount = healthPoints / maxHealth;
+        }       
+    }
+
     public void receiveHoldingDamage(ObjectGrabbable grabbable, string tag)
     {
         if (grabbable == null || grabbable.damageableObject == null) return;

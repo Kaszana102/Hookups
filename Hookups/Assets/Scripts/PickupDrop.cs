@@ -31,6 +31,8 @@ public class PickupDrop : ObjectGrabbable
         if (player != null && raycastHit.transform == player.transform)
             return;
 
+        if (grabbable == this) //check if grabbing self
+            return;
 
         grabbedItem = grabbable;
         grabbedItem.damageableObject = GetComponent<DamageableObject>();
