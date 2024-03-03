@@ -7,8 +7,14 @@ public class DamageableObject : MonoBehaviour
 {
     [SerializeField] public int healthPoints;
     [SerializeField] private Image healthBar;
-    private float maxHealth = 10;
+    public Healthbar healthbar;
+    private int maxHealth = 10;
 
+
+    private void Start()
+    {
+        healthbar.SetMaxHealth(maxHealth);
+    }
     // Start is called before the first frame update
     void OnCollisionEnter(Collision collision)
     {
@@ -24,7 +30,8 @@ public class DamageableObject : MonoBehaviour
             if (healthPoints > 0)
             {
                 healthPoints -= grabbable.damage;
-                healthBar.fillAmount = healthPoints / maxHealth;
+                //healthBar.fillAmount = healthPoints / maxHealth;
+                healthbar.SetHealth(healthPoints);
             }   
         }
     }
@@ -34,7 +41,8 @@ public class DamageableObject : MonoBehaviour
         if (healthPoints > 0)
         {
             healthPoints -= damage;
-            healthBar.fillAmount = healthPoints / maxHealth;
+            //healthBar.fillAmount = healthPoints / maxHealth;
+            healthbar.SetHealth(healthPoints);
         }       
     }
 
@@ -46,7 +54,8 @@ public class DamageableObject : MonoBehaviour
             if (healthPoints > 0)
             {
                 healthPoints -= grabbable.damage;
-                healthBar.fillAmount = healthPoints / maxHealth;
+                //healthBar.fillAmount = healthPoints / maxHealth;
+                healthbar.SetHealth(healthPoints);
             }   
         }
     }
