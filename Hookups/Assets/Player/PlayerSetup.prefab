@@ -676,11 +676,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4261501194668593508, guid: 32f9d77898a62f54798039f4848bd52d, type: 3}
       propertyPath: m_Name
-      value: Player1
+      value: PlayerBlue
       objectReference: {fileID: 0}
     - target: {fileID: 4941472223934764628, guid: 32f9d77898a62f54798039f4848bd52d, type: 3}
       propertyPath: m_DefaultControlScheme
-      value: Gamepad
+      value: Keyboard&Mouse
+      objectReference: {fileID: 0}
+    - target: {fileID: 4941472223934764628, guid: 32f9d77898a62f54798039f4848bd52d, type: 3}
+      propertyPath: m_NeverAutoSwitchControlSchemes
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5045800999925321931, guid: 32f9d77898a62f54798039f4848bd52d, type: 3}
       propertyPath: m_Layer
@@ -942,11 +946,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4261501194668593508, guid: 32f9d77898a62f54798039f4848bd52d, type: 3}
       propertyPath: m_Name
-      value: Player2
+      value: PlayerRed
       objectReference: {fileID: 0}
     - target: {fileID: 4941472223934764628, guid: 32f9d77898a62f54798039f4848bd52d, type: 3}
       propertyPath: m_DefaultControlScheme
-      value: Gamepad
+      value: Keyboard&Mouse
+      objectReference: {fileID: 0}
+    - target: {fileID: 4941472223934764628, guid: 32f9d77898a62f54798039f4848bd52d, type: 3}
+      propertyPath: m_NeverAutoSwitchControlSchemes
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5045800999925321931, guid: 32f9d77898a62f54798039f4848bd52d, type: 3}
       propertyPath: m_Layer
