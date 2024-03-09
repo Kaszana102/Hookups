@@ -42,6 +42,7 @@ GameObject:
   - component: {fileID: 6915127688906590441}
   - component: {fileID: 8651726367284493601}
   - component: {fileID: 2695781678443115737}
+  - component: {fileID: 9207427199849329871}
   m_Layer: 0
   m_Name: ThrowableBase
   m_TagString: Untagged
@@ -106,6 +107,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lerpSpeed: 32
   throwForce: 1000
+  colliders: {fileID: 0}
   grabAudio: {fileID: 8300000, guid: 6b45aad2fce9cd3479978960dbbfd005, type: 3}
   throwAudio: {fileID: 8300000, guid: 513cf4ad9e72e4d478e285d93a9a009a, type: 3}
   dropAudio: {fileID: 8300000, guid: 513cf4ad9e72e4d478e285d93a9a009a, type: 3}
+  damage: 1
+--- !u!114 &9207427199849329871
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4735875243835627007}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 981f7399dc3707144a1af1d654e77805, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  collidersObject: {fileID: 0}

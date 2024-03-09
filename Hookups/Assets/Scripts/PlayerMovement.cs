@@ -36,14 +36,19 @@ public class PlayerMovement : MonoBehaviour
     
     public void OnMove(InputAction.CallbackContext context)
     {
+        Vector2 prevVal = moveDirection;
         moveDirection = context.ReadValue<Vector2>();                
         Debug.Log("PRESSED");
         if (!sprinting)
         {
             if((!context.started || context.performed) ^context.canceled){                
                 animator.SetInteger("MovSpeed", 1);
-                runStartTime = Time.time;
-                running= true;
+                running = true;
+                if(prevVal.x ==0 && prevVal.y == 0)
+                {
+                    runStartTime = Time.time;
+                }
+                
             }
             else
             {
@@ -173,5 +178,10 @@ public class PlayerMovement : MonoBehaviour
             jumpForces = Vector3.up * jumpForce;
         }
         rb.AddForce(jumpForces,ForceMode.VelocityChange);
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        dashing = false;
     }
 }

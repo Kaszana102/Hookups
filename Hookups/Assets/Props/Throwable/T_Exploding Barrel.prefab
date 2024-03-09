@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 2656285828364606862}
   - component: {fileID: 1814603325495209587}
   - component: {fileID: 2742804712195356548}
+  - component: {fileID: 854601004382647258}
   m_Layer: 0
   m_Name: T_Exploding Barrel
   m_TagString: Untagged
@@ -81,6 +82,19 @@ MonoBehaviour:
   dropAudio: {fileID: 0}
   damage: 1
   explosion: {fileID: 727350107936222430, guid: abff6b562a795ee47875469d70ba1bae, type: 3}
+--- !u!114 &854601004382647258
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6822947497952633430}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 981f7399dc3707144a1af1d654e77805, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  collidersObject: {fileID: 4737403404409597289}
 --- !u!1001 &155002761873872844
 PrefabInstance:
   m_ObjectHideFlags: 0

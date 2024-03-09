@@ -39,6 +39,11 @@ public class PickupDrop : ObjectGrabbable
         grabbedItem.grab(objectGrabPointTransformSource, grabbedItem.damageableObject, this);
         animator.SetBool("Holding", true);        
         SetLayer(grabbedItem.transform,visibleForPlayerMask);
+
+        if(grabbedItem.TryGetComponent(out KeepPositionUntilHit component)){
+            component.AllowMoving();
+        }
+
     }
 
     public void OnThrow(InputAction.CallbackContext context)
