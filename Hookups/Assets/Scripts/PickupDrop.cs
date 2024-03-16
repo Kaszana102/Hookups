@@ -9,6 +9,7 @@ public class PickupDrop : ObjectGrabbable
     [SerializeField] private Transform playerCameraTransform;
     [SerializeField] private Transform objectGrabPointTransformSource;    
     [SerializeField] private int visibleForPlayerMask;
+    public HoldingItem itemCanv;
     public ObjectGrabbable grabbedItem;
 
     [SerializeField]
@@ -34,6 +35,10 @@ public class PickupDrop : ObjectGrabbable
         if (grabbable == this) //check if grabbing self
             return;
 
+        if(itemCanv == null)
+            return;
+
+        itemCanv.grabItem();
         grabbedItem = grabbable;
         grabbedItem.damageableObject = GetComponent<DamageableObject>();
         grabbedItem.grab(objectGrabPointTransformSource, grabbedItem.damageableObject, this);
@@ -51,6 +56,10 @@ public class PickupDrop : ObjectGrabbable
         if (grabbedItem == null)
             return;
 
+        if (itemCanv == null)
+            return;
+
+        itemCanv.throwItem();
         grabbedItem.throwObject(GetComponent<DamageableObject>());
         animator.SetTrigger("Throw");
         animator.SetBool("Holding", false);
