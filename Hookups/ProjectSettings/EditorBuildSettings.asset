@@ -14,5 +14,8 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/FarmScene.unity
     guid: 5711fd4bbb3d83944b7ce0268f894b75
+  - enabled: 1
+    path: Assets/Scenes/Shipyard.unity
+    guid: a793ba10d32e5704d81292f2607303e6
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 59ac37f401a8bbb479b1218687735515, type: 2}

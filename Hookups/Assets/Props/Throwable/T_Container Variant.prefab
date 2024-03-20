@@ -78,7 +78,7 @@ PrefabInstance:
     - target: {fileID: 2695781678443115737, guid: b249f19f064421f42b95f4fe2ee363b7, type: 3}
       propertyPath: colliders
       value: 
-      objectReference: {fileID: 8863192439094687580}
+      objectReference: {fileID: 3755870474141661493}
     - target: {fileID: 4735875243835627007, guid: b249f19f064421f42b95f4fe2ee363b7, type: 3}
       propertyPath: m_Name
       value: T_Container Variant
@@ -138,10 +138,5 @@ PrefabInstance:
 --- !u!4 &2991999828505464632 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6915127688906590441, guid: b249f19f064421f42b95f4fe2ee363b7, type: 3}
-  m_PrefabInstance: {fileID: 8535095363536144337}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &8863192439094687580 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 969015623416639629, guid: b249f19f064421f42b95f4fe2ee363b7, type: 3}
   m_PrefabInstance: {fileID: 8535095363536144337}
   m_PrefabAsset: {fileID: 0}
