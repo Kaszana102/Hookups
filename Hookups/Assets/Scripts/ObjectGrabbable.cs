@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 public class ObjectGrabbable : MonoBehaviour, IGrabbable
 {
@@ -82,12 +83,38 @@ public class ObjectGrabbable : MonoBehaviour, IGrabbable
             thrown = true;
 
             this.damageableObject = damageableObject;
+            StartCoroutine(PreventThrowerCollisions(player));
             drop();
             rb.AddForce(forceVector, ForceMode.Impulse);
-            throwAudioSource.Play();
-            player = null;
+            throwAudioSource.Play();            
             rb.isKinematic = false;
-            colliders.SetActive(true);
+            colliders.SetActive(true);            
         }
+    }
+
+    IEnumerator PreventThrowerCollisions(PickupDrop player)
+    {
+        float start = Time.time;
+        List<Collider> objectColliders = colliders.GetComponentsInChildren<Collider>().ToList();
+        var a = player.transform.Find("Colliders");
+        Collider playerCollider = player.transform.Find("Colliders").gameObject.GetComponent<Collider>();
+        
+
+        foreach(Collider collider in objectColliders)
+        {
+            Physics.IgnoreCollision(collider, playerCollider, true);
+        }
+
+        while (Time.time < start + 0.25f)
+        {
+            yield return null;
+        }
+
+        foreach (Collider collider in objectColliders)
+        {
+            Physics.IgnoreCollision(collider, playerCollider, false);
+        }
+        player = null;
+
     }
 }

@@ -287,11 +287,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 6565515078733466587}
   speed: 0.2
-  sensitivity: 0.2
+  sensitivity: 1
   maxForce: 500
   jumpForce: 8
   touchingWall: 0
   camera: {fileID: 3686550468584431377}
+  speedingUp: 0.2
   animator: {fileID: 5632633397660144342}
   self: {fileID: 7525399048117535236}
 --- !u!114 &4941472223934764628
@@ -487,8 +488,12 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: af51c784-45ff-48df-ae5d-9c8164bd7e9b
     m_ActionName: Player/Dash[/XInputControllerWindows/rightShoulder]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 2350e613-8f37-4117-8ae1-3d3adb3ce63f
+    m_ActionName: Player/Join[/XInputControllerWindows/start,/XInputControllerWindows1/start]
   m_NeverAutoSwitchControlSchemes: 0
-  m_DefaultControlScheme: 
+  m_DefaultControlScheme: Gamepad
   m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 3686550468584431377}
@@ -514,6 +519,7 @@ MonoBehaviour:
   playerCameraTransform: {fileID: 7362106525005933329}
   objectGrabPointTransformSource: {fileID: 192084463395835394}
   visibleForPlayerMask: 0
+  itemCanv: {fileID: 0}
   grabbedItem: {fileID: 0}
   animator: {fileID: 5632633397660144342}
 --- !u!114 &8886190382400461741
@@ -530,6 +536,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   healthPoints: 10
   healthBar: {fileID: 0}
+  healthbar: {fileID: 0}
 --- !u!1 &6055375141332366271
 GameObject:
   m_ObjectHideFlags: 0

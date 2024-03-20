@@ -16,7 +16,7 @@ public class PickupDrop : ObjectGrabbable
     private Animator animator;
 
     public void OnGrab(InputAction.CallbackContext context) {
-        float pickupDistance = 30f;
+        float pickupDistance = 10f;
         ObjectGrabbable grabbable;
         RaycastHit raycastHit;
         

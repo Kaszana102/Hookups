@@ -46,17 +46,15 @@ public class DamageableObject : MonoBehaviour
         }       
     }
 
-    public void receiveHoldingDamage(ObjectGrabbable grabbable, string tag)
+    public void receiveHoldingDamage(int damage)
     {
-        if (grabbable == null || grabbable.damageableObject == null) return;
-        if (tag == "Untagged" && grabbable.damageableObject.Equals(this))
+        
+        if (healthPoints > 0)
         {
-            if (healthPoints > 0)
-            {
-                healthPoints -= grabbable.damage;
-                //healthBar.fillAmount = healthPoints / maxHealth;
-                healthbar.SetHealth(healthPoints);
-            }   
-        }
+            healthPoints -= damage;
+            //healthBar.fillAmount = healthPoints / maxHealth;
+            healthbar.SetHealth(healthPoints);
+        }   
+        
     }
 }

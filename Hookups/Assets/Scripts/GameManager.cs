@@ -70,6 +70,7 @@ public class GameManager : MonoBehaviour
 
     public void ResetLevel()
     {
-        AsyncOperation asyncLoad = SceneManager.LoadSceneAsync("FarmScene");
+        AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().name);
+        
     }
 }

@@ -95,7 +95,7 @@ MonoBehaviour:
   grabAudio: {fileID: 8300000, guid: 6b45aad2fce9cd3479978960dbbfd005, type: 3}
   throwAudio: {fileID: 8300000, guid: 513cf4ad9e72e4d478e285d93a9a009a, type: 3}
   dropAudio: {fileID: 8300000, guid: 513cf4ad9e72e4d478e285d93a9a009a, type: 3}
-  damage: 1
+  damage: 3
 --- !u!4 &1616629629010767235 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6915127688906590441, guid: b249f19f064421f42b95f4fe2ee363b7, type: 3}
