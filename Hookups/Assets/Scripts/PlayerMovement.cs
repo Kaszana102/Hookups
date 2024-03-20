@@ -184,4 +184,11 @@ public class PlayerMovement : MonoBehaviour
     {
         dashing = false;
     }
+
+    /*
+    private void OnCollisionStay(Collision collision)
+    {
+        dashing = false;
+    }
+    */
 }
