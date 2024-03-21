@@ -880,11 +880,14 @@ MonoBehaviour:
 
     LB - Sprint
 
+    RB - Dash
+
     X - Grab
 
     RT - Throw
 
-    B - Release'
+    B
+    - Release'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: c81ef2545c6e0c74ea542dddf8e74e8d, type: 2}
   m_sharedMaterial: {fileID: 1878714474676414086, guid: c81ef2545c6e0c74ea542dddf8e74e8d, type: 2}
